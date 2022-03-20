@@ -9,10 +9,16 @@ void setup() {
 
 void loop() {
   float analogPin[5] = {0, 0, 0, 0, 0};
-
+  String serialOutput;
+  
   for(int x = 0; x < 5; x++){
     convert_analog_input(&analogPin[x], x);
+    if(x == 0)
+      serialOutput = (String)analogPin[0];
+    else
+      serialOutput += "|"+(String)analogPin[x];
   }
+  Serial.println(serialOutput);
 }
 
 void convert_analog_input(float *output, int pin){
