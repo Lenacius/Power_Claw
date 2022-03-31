@@ -9,15 +9,17 @@
 
 Adafruit_MPU6050 mpu;
 
+// Finger bend values
+float analogPin[5] = {0, 0, 0, 0, 0};
+
+// Serial Output
 String serialOutput;
 
 void setup() {
   SetupMPU6050();
 }
 
-void loop() {
-  float analogPin[5] = {0, 0, 0, 0, 0};
-  
+void loop() {  
   for(int x = 0; x < 5; x++){
     convert_analog_input(&analogPin[x], x);
     if(x == 0)
@@ -28,6 +30,8 @@ void loop() {
   Serial.println(serialOutput);
   MPU6050Read();
 }
+
+
 
 void convert_analog_input(float *output, int pin){
   *output = (analogRead(pin) / 1023.0) * 100.0;
