@@ -9,13 +9,14 @@
 
 Adafruit_MPU6050 mpu;
 
+String serialOutput;
+
 void setup() {
   SetupMPU6050();
 }
 
 void loop() {
   float analogPin[5] = {0, 0, 0, 0, 0};
-  String serialOutput;
   
   for(int x = 0; x < 5; x++){
     convert_analog_input(&analogPin[x], x);
@@ -60,9 +61,7 @@ void SetupMPU6050(){
   delay(100);
 }
 
-void MPU6050Read(){
-  String serialOutput;
-  
+void MPU6050Read(){  
   /* Get new sensor events with the readings */
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
