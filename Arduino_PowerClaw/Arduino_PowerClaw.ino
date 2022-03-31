@@ -19,7 +19,7 @@ void setup() {
   SetupMPU6050();
 }
 
-void loop() {  
+void loop() {
   ReadAnalogPins();
   MPU6050Read();
 }
@@ -32,7 +32,7 @@ void ReadAnalogPins(){
     else
       serialOutput += '|' + (String)analogPin[x];
   }
-  Serial.println(serialOutput);  
+  Serial.println(serialOutput);
 }
 
 void convert_analog_input(float *output, int pin){
