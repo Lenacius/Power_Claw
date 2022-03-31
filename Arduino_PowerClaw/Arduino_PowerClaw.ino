@@ -75,9 +75,9 @@ void MPU6050Read(){
   serialOutput = "MPU";
 
   // Accelerometer uses m/s^2
-  serialOutput += '|' + (String)a.acceleration.x;
-  serialOutput += '|' + (String)a.acceleration.y;
-  serialOutput += '|' + (String)a.acceleration.z;
+  //serialOutput += '|' + (String)a.acceleration.x;
+  //serialOutput += '|' + (String)a.acceleration.y;
+  //serialOutput += '|' + (String)a.acceleration.z;
 
   // Gyroscope uses rad/s
   serialOutput += '|' + (String)g.gyro.x;
@@ -85,7 +85,7 @@ void MPU6050Read(){
   serialOutput += '|' + (String)g.gyro.z;
 
   // Temperature uses degC
-  serialOutput += '|' + (String)temp.temperature;
+  //serialOutput += '|' + (String)temp.temperature;
 
   Serial.println(serialOutput);
 }
