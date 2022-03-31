@@ -69,7 +69,7 @@ void MPU6050Read(){
   serialOutput = "MPU";
 
   // Accelerometer uses m/s^2
-  serialOutput = '|' + (String)a.acceleration.x;
+  serialOutput += '|' + (String)a.acceleration.x;
   serialOutput += '|' + (String)a.acceleration.y;
   serialOutput += '|' + (String)a.acceleration.z;
 
