@@ -20,18 +20,20 @@ void setup() {
 }
 
 void loop() {  
-  for(int x = 0; x < 5; x++){
-    convert_analog_input(&analogPin[x], x);
-    if(x == 0)
-      serialOutput = (String)analogPin[0];
-    else
-      serialOutput += "|"+(String)analogPin[x];
-  }
-  Serial.println(serialOutput);
+  ReadAnalogPins();
   MPU6050Read();
 }
 
-
+void ReadAnalogPins(){
+  for(int x = 0; x < 5; x++){
+    convert_analog_input(&analogPin[x], x);
+    if(x == 0)
+      serialOutput = "FNG|" + (String)analogPin[0];
+    else
+      serialOutput += '|' + (String)analogPin[x];
+  }
+  Serial.println(serialOutput);  
+}
 
 void convert_analog_input(float *output, int pin){
   *output = (analogRead(pin) / 1023.0) * 100.0;
