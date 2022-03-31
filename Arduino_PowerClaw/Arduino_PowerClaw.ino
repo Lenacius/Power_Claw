@@ -26,7 +26,7 @@ void loop() {
       serialOutput += "|"+(String)analogPin[x];
   }
   Serial.println(serialOutput);
-  MPURead();
+  MPU6050Read();
 }
 
 void convert_analog_input(float *output, int pin){
