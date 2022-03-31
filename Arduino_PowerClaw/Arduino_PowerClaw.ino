@@ -79,10 +79,10 @@ void MPU6050Read(){
   //serialOutput += '|' + (String)a.acceleration.y;
   //serialOutput += '|' + (String)a.acceleration.z;
 
-  // Gyroscope uses rad/s
+  // Gyroscope uses rad/s | Sending formatted to UNITY
   serialOutput += '|' + (String)g.gyro.x;
-  serialOutput += '|' + (String)g.gyro.y;
   serialOutput += '|' + (String)g.gyro.z;
+  serialOutput += '|' + (String)g.gyro.y;
 
   // Temperature uses degC
   //serialOutput += '|' + (String)temp.temperature;
