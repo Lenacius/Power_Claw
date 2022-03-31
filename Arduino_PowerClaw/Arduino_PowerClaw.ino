@@ -2,6 +2,7 @@
  * Projeto de Plataforma Alternativa - Power Claw
  */
 
+// MPU6050 Sensor libries from Adafruit
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
@@ -24,6 +25,7 @@ void loop() {
       serialOutput += "|"+(String)analogPin[x];
   }
   Serial.println(serialOutput);
+  MPURead();
 }
 
 void convert_analog_input(float *output, int pin){
@@ -56,4 +58,29 @@ void SetupMPU6050(){
   mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
 
   delay(100);
+}
+
+void MPU6050Read(){
+  String serialOutput;
+  
+  /* Get new sensor events with the readings */
+  sensors_event_t a, g, temp;
+  mpu.getEvent(&a, &g, &temp);
+
+  serialOutput = "MPU";
+
+  // Accelerometer uses m/s^2
+  serialOutput = '|' + (String)a.acceleration.x;
+  serialOutput += '|' + (String)a.acceleration.y;
+  serialOutput += '|' + (String)a.acceleration.z;
+
+  // Gyroscope uses rad/s
+  serialOutput += '|' + (String)g.gyro.x;
+  serialOutput += '|' + (String)g.gyro.y;
+  serialOutput += '|' + (String)g.gyro.z;
+
+  // Temperature uses degC
+  serialOutput += '|' + (String)temp.temperature;
+
+  Serial.println(serialOutput);
 }
