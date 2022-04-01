@@ -36,7 +36,7 @@ void ReadAnalogPins(){
 }
 
 void convert_analog_input(float *output, int pin){
-  *output = (analogRead(pin) / 1023.0f) * 100.0f;
+  *output = (analogRead(pin) / 1023.0f) * 1000.0f;
 }
 
 void SetupMPU6050(){
